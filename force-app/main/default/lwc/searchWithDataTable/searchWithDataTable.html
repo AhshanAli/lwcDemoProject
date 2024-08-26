@@ -1,0 +1,36 @@
+<template>      
+    <lightning-card title="Accounts" icon-name="custom:custom63">  
+
+        <div style="width:200px; padding:0.5rem;">
+        <lightning-combobox
+               name="progress"
+               label="See the number of Accounts"
+               value={selectedValue}
+               placeholder="Select the Number"
+               options={options}
+               onchange={handleComboChange} >
+    </lightning-combobox>
+        </div>
+   <p>Selected value is: {selectedValue}</p>
+        <div class="slds-m-around_medium">  
+            <lightning-input type="search" label="Search Account"
+                             placeholder="Search Account" 
+                             onchange={handleSearch}></lightning-input><br/><br/>
+            <template if:true={availableAccounts}>     
+                
+                
+                <lightning-datatable
+                    key-field="Id"
+                    data={availableAccounts}
+                    columns={columns}
+                    hide-checkbox-column="true"
+                    show-row-number-column="true"
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>  
+            </template>      
+            <template if:true={error}>  
+                {error}>                  
+            </template>  
+        </div>  
+    </lightning-card>
+</template>

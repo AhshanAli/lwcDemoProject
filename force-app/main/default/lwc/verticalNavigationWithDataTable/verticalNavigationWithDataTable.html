@@ -1,0 +1,31 @@
+<template>
+    <div style="width: 320px;">
+    <lightning-card>
+        <lightning-vertical-navigation selected-item="recent" compact>
+            <lightning-vertical-navigation-section label="Details Of Object">
+
+                <lightning-vertical-navigation-item label="Accounts"
+                                                     name="account" 
+                                                     onselect={getAccountLists}>
+                </lightning-vertical-navigation-item>
+
+                <lightning-vertical-navigation-item label="Contacts" name="contact"></lightning-vertical-navigation-item>
+                <lightning-vertical-navigation-item label="Opportunity" name="opportunity"></lightning-vertical-navigation-item>
+                <lightning-vertical-navigation-item label="Lead" name="lead"></lightning-vertical-navigation-item>
+                <lightning-vertical-navigation-item label="Case" name="case"></lightning-vertical-navigation-item>
+            </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+    </lightning-card>
+    </div>
+  <template if:true={accounts}>
+
+    <template for:each={accounts} for:item="acc">
+        <div class="slds-box" key={acc.id}>
+            <li>
+                {acc.Name}
+                {acc.AccountNumber}
+            </li>
+        </div>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .chat-box {
+    flex: 1;
+    overflow-y: scroll;
+  }
+  
+  .user-message {
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    align-self: flex-end;
+  }
+  
+  .bot-message {
+    background-color: #f1f1f1;
+    color: black;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    align-self: flex-start;
+  }
+  

@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_4-of-12 slds-m-bottom--medium">
+            <lightning-Input type="search" placeholder="Search Case Number..." value={caseNumber} name="caseNumber" class="caseNumber" onchange={handleChangeCaseNumber}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-m-top--medium" style="margin-top: 19px; margin-left: 10px;">
+                <lightning-button label="Search Comment" size="small" variant="brand" onclick={handleCaseSearch} icon-name="utility:search" icon-position="right"></lightning-button>
+                </div>
+            </div>
+            <h2>Case Number :- <span><strong>{currentCaseNumber}</strong></span></h2><br/>
+
+            <template if:true={caseList}>
+                <lightning-datatable data={caseList} columns={columns1}
+                                     show-row-number-column sorted-by={sortBy}
+                                     sorted-direction={sortDirection} 
+                                     hide-checkbox-column="true" key-field="Id">
+                </lightning-datatable>
+             </template>
+              <template if:true={error}>
+               {error}
+              </template>
+<h3><strong><span style="color:brown;">{dataNotFound}</span></strong></h3><br/>
+    </lightning-card>
+</template>

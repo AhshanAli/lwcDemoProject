@@ -1,0 +1,93 @@
+<template>    
+    <lightning-card title="Lightning Tab Navigation With Buttons (lwcFactory.com)">
+
+        <!--Group Of lightning Tab Set-->
+    <lightning-tabset active-tab-value={activeTab}>
+         <div class="slds-m-around_x-small">
+            <lightning-tab label="Account"  value="1" onactive={handleActive}>
+                Account Dummy Data...  
+
+                <!--This is for Account Object-->
+                <h2> Account Datatable</h2>
+
+           <!--<div class="slds-m-around_medium">
+                <lightning-button variant="base" label="Show The Data"
+                                  onclick={handleShowAccountData} 
+                                  icon-name={toggleIconName} class="slds-m-left_x-small">
+                </lightning-button>
+                </div>-->
+
+
+                <lightning-input type="checkbox" label="Show details" 
+                                                 onchange={handleChange}>
+                                                </lightning-input>
+               <template if:true={areDataVisible}>
+                  <lightning-datatable data={accList} columns={columns1}
+                                       show-row-number-column sorted-by={sortBy}
+                                       sorted-direction={sortDirection}
+                                       onsort={doSorting} 
+                                       hide-checkbox-column="true" key-field="Id">
+                  </lightning-datatable>
+               </template>
+                <template if:true={error}>
+                 {error}
+                </template>
+            </lightning-tab>
+           
+
+
+
+            <lightning-tab label="Contact"  value="2" onactive={handleActive}>
+                Contact Dummy Data...
+
+                <!--this is for contact Object-->
+                <lightning-button label={actionButtonLabel} 
+                                  onclick={toggleDetails}
+                                  icon-name={toggleIconName}>
+                                                </lightning-button>
+                <template if:true={showDetailsOfContact}>
+                    <lightning-datatable data={conList} columns={columns2} show-row-number-column hide-checkbox-column="true" key-field="Id">
+                    </lightning-datatable>
+                </template>
+                <template if:true={error}>
+                    {error}
+                </template>
+            </lightning-tab>
+           
+
+
+            <lightning-tab label="Case"  value="3" onactive={handleActive}>
+                Case  Datatable...
+            <!--this is for case Object-->
+            <template if:true={caseList}>
+                <lightning-datatable data={caseList} columns={columns3} show-row-number-column hide-checkbox-column="true" key-field="Id">
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+            </lightning-tab>
+           
+
+
+            <lightning-tab label="Opportunity"  value="4" onactive={handleActive}>
+                Opportunity Dummy Datatable..
+
+                <template if:true={oppList}>
+                    <lightning-datatable data={oppList} columns={columns4} show-row-number-column hide-checkbox-column="true" key-field="Id">
+                    </lightning-datatable>
+                </template>
+                <template if:true={error}>
+                    {error}
+                </template>
+            </lightning-tab>
+        </div>
+    </lightning-tabset>
+    
+    <!--Navigation Button on card footer-->
+    <div slot="footer">      
+        <lightning-button variant="brand" label="Back" disabled={bDisableBackBtn} onclick={goBack}></lightning-button>
+        <lightning-button variant="brand" label="Next" disabled={bDisableNextBtn} onclick={goNext} class="slds-m-left_x-small"></lightning-button>
+    </div>
+</lightning-card>
+</template>
